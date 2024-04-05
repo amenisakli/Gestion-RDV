@@ -1,0 +1,193 @@
+<div class="antialiased  p-8 dark:bg-gray-900" *ngIf="showMenu ">
+   <nav
+      class="bg-white border-b border-gray-200 px-8 py-4 dark:bg-gray-800 dark:border-gray-700 fixed left-0 sm:left-0 md:left-64 right-0 top-0 z-50">
+      <div class="flex flex-row items-center">
+         <span class="text-xl font-bold flex basis-1/6	justify-start">Administration</span>
+
+         <div class="flex items-center lg:order-2 sm:px-10 pr-0 justify-end basis-5/6">
+            <button type="button"
+               class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+               id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
+               <span class="sr-only">Open user menu</span>
+               <svg class="w-6 h-6 text-white " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd"
+                     d="M12 20a8 8 0 0 1-5-1.8v-.6c0-1.8 1.5-3.3 3.3-3.3h3.4c1.8 0 3.3 1.5 3.3 3.3v.6a8 8 0 0 1-5 1.8ZM2 12a10 10 0 1 1 10 10A10 10 0 0 1 2 12Zm10-5a3.3 3.3 0 0 0-3.3 3.3c0 1.7 1.5 3.2 3.3 3.2 1.8 0 3.3-1.5 3.3-3.3C15.3 8.6 13.8 7 12 7Z"
+                     clip-rule="evenodd" />
+               </svg>
+
+            </button>
+            <!-- Dropdown menu -->
+            <div
+               class="hidden z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
+               id="dropdown" *ngIf="user">
+               <div class="py-3 px-4">
+                  <span class="block text-sm font-semibold text-gray-900 ">{{user.username}}
+                     {{user.lastname}}</span>
+                  <span class="block text-sm text-gray-900 truncate ">{{user.email}}</span>
+               </div>
+               <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
+                  <li>
+                     <div
+                        class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">
+                        {{user.roleId.name}}</div>
+                  </li>
+                  <li>
+                     <a href="#"
+                        class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Account
+                        settings</a>
+                  </li>
+               </ul>
+               <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
+                  <li>
+                     <a href="#"
+                        class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
+                        out</a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+
+         <div class="flex items-center 	">
+            <button data-drawer-target="drawer-navigation" data-drawer-toggle="drawer-navigation"
+               aria-controls="drawer-navigation"
+               class="p-2 mr-2 text-gray-600 rounded-lg cursor-pointer md:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100  focus:ring-2 focus:ring-gray-100 ">
+               <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                     d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                     clip-rule="evenodd"></path>
+               </svg>
+               <svg aria-hidden="true" class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                     d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                     clip-rule="evenodd"></path>
+               </svg>
+               <span class="sr-only">Toggle sidebar</span>
+            </button>
+         </div>
+      </div>
+   </nav>
+   <!-- Sidebar -->
+   <aside 
+      class="fixed top-0 left-0 z-40 w-64 h-screen p-6 bg-slate-50 transition-transform -translate-x-full  border-r border-gray-200 md:translate-x-0 "
+      aria-label="Sidenav" id="drawer-navigation">
+      <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+         <svg class="flex-shrink-0 w-6 h-6 text-teal-700 transition duration-75  group-hover:text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+            width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+               d="m11.5 11.5 2.071 1.994M4 10h5m11 0h-1.5M12 7V4M7 7V4m10 3V4m-7 13H8v-2l5.227-5.292a1.46 1.46 0 0 1 2.065 2.065L10 17Zm-5 3h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
+         </svg>
+         <span class="self-center text-xl font-bold whitespace-nowrap ">Rendez<span class="text-lg font-semibold">vous</span></span>
+
+      </a>
+      <div class="overflow-y-auto py-10 px-3 h-full  dark:bg-gray-800">
+         <ul class="space-y-5">
+            <li>
+               <a routerLink="admin"
+                  class="flex items-center p-2 text-base font-medium text-teal-700 rounded-lg  hover:bg-teal-100 group">
+                  <svg aria-hidden="true"
+                     class="w-6 h-6 text-teal-700 transition duration-75 "
+                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                     <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                  </svg>
+                  <span class="ml-3">Acceuil </span>
+               </a>
+            </li>
+            <li>
+               <button type="button"
+                  class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-teal-100 "
+                  aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
+                  <svg aria-hidden="true"
+                     class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-teal-900 "
+                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd"
+                        d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
+                        clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="flex-1 ml-3 text-left whitespace-nowrap">Administrative</span>
+                  <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                     xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                  </svg>
+               </button>
+               <ul id="dropdown-pages" class="hidden py-2 space-y-2 ">
+                  <li>
+                     <a routerLink="user"
+                        class="flex items-center  p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-teal-50 ">Utilisateurs</a>
+                  </li>
+                  <li>
+                     <a routerLink="Service"
+                        class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-teal-50 ">Service</a>
+                  </li>
+                  <li>
+                     <a routerLink="role"
+                        class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-teal-50 ">Role</a>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               <a routerLink="patient"
+                  class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg  hover:bg-teal-100 group">
+                  <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75  group-hover:text-gray-900 "
+                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                     viewBox="0 0 24 24">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z" />
+                  </svg>
+
+                  <span class="flex-1 ml-3 whitespace-nowrap">Patients</span>
+               </a>
+            </li>
+            <li>
+               <a routerLink="rdv"
+                  class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg  hover:bg-teal-100 group">
+                  <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75  group-hover:text-gray-900 "
+                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                     viewBox="0 0 24 24">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z" />
+                  </svg>
+
+                  <span class="flex-1 ml-3 whitespace-nowrap">Appointement</span>
+               </a>
+            </li>
+         </ul>
+         <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700 ">
+            <li>
+               <a (click)="logout()"
+                  class="flex cursor-pointer items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-teal-100 group">
+                  <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75  group-hover:text-gray-900 "
+                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                     viewBox="0 0 24 24">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z" />
+                  </svg>
+
+                  <span class="ml-3">Deconnexion</span>
+               </a>
+            </li>
+            <li>
+               <a routerLink="profil"
+                  class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-teal-100 group">
+                  <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75  group-hover:text-gray-900 "
+                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                     viewBox="0 0 24 24">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 9h3m-3 3h3m-3 3h3m-6 1c-.306-.613-.933-1-1.618-1H7.618c-.685 0-1.312.387-1.618 1M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm7 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
+                  </svg>
+
+                  <span class="ml-3">Profil</span>
+               </a>
+            </li>
+         </ul>
+      </div>
+
+   </aside>
+
+
+</div>

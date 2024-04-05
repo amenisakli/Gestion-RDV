@@ -1,0 +1,175 @@
+
+<div class="flex flex-col ">
+    <div class=" flex items-center justify-center bg-gradient-to-l from-gray-300">
+        <div class="sm:self-center ">
+            <div class="flex flex-col sm:justify-center">
+                <div class="xl:text-5xl pt-4 sm:text-3xl font-semibold text-3xl text-teal-400">
+                    Votre santé est votre priorité
+                </div>
+                <div class="xl:text-8xl sm:text-4xl text-4xl  font-extrabold text-teal-400 px-0 sm:px-3  py-8">
+                    Soins de qualité
+                </div>
+                <div class="xl:text-2xl sm:text-lg text-md text-gray-500 tracking-tight">
+                    Nous vous aiderons à vous sentir mieux.
+                </div>
+            </div>
+            <div class="justify-start sm:px-3 px-0 space-y-4 py-10 sm:flex sm:space-y-0 sm:space-x-4">
+                <a href="service"
+                    class="w-full sm:w-auto bg-orange-300 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-orange-300 text-gray-800 hover:text-white rounded-full inline-flex items-center justify-center px-4 py-2.5">
+                    <div class="text-left rtl:text-right">
+                        <div class="uppercase font-sans text-sm font-semibold">Ajouter</div>
+                    </div>
+                </a>
+                <button (click)="showModal = true"
+                    class="w-full sm:w-auto bg-orange-300 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-orange-300 text-gray-800 hover:text-white rounded-full inline-flex items-center justify-center px-4 py-2.5">
+                    <div class="text-left rtl:text-right">
+                        <div class="uppercase font-sans text-sm font-semibold">Confirmer</div>
+                    </div>
+                </button>
+                <div class="flex justify-start items-start flex-col" *ngIf="showModal">
+                    <form [formGroup]="searchForm">
+                        <label for="simple-search" class="sr-only">Search</label>
+                        <div class="relative w-full">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2" />
+                                </svg>
+                            </div>
+                            <input type="text" id="simple-search" formControlName="matricule"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full ps-10 p-2.5 "
+                                placeholder="Ajouter votre matricule " required (keyup.enter)="onSubmit()" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="flex justify-center lg:block hidden">
+            <img
+                src="https://assets.setmore.com/website/v2/images/industry-pages/medical/book-doctors-appointment-online.png" />
+        </div>
+    </div>
+    <div class="lg:grid lg:grid-cols-5 lg:gap-8 sm:grid sm:grid-cols-1 py-2 lg:py-10">
+        <div class="col-span-3 lg:grid lg:grid-cols-3 gap-4 lg:gap-4 sm:grid sm:grid-cols-1 p-4 sm:gap-4">
+
+            <div class="bg-gray-100  mb-4 p-4 sm:mb-0">
+                <div class="flex items-center justify-center flex-col">
+                    <svg class="w-24 h-24 text-teal-400 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M6 2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 1 0 0-2h-2v-2h2c.6 0 1-.4 1-1V4a2 2 0 0 0-2-2h-8v16h5v2H7a1 1 0 1 1 0-2h1V2H6Z" clip-rule="evenodd"/>
+                      </svg>
+                    <h3 class="text-3xl">Consultation</h3>
+                    <span class="text-lg">
+                        par des professionnels
+                    </span>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 mb-4 p-4 sm:mb-0">
+                <div class="flex items-center justify-center flex-col">
+                    <svg class="w-24 h-24 text-teal-400 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                            d="M12 6C6.5 1 1 8 5.8 13l6.2 7 6.2-7C23 8 17.5 1 12 6Z" />
+                    </svg>
+                    <h3 class="text-3xl"> Diagnostic</h3>
+                    <span class="text-lg">
+                        Approche précise
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="bg-gray-50 mb-4 p-4 sm:mb-0 ">
+                <div class=" flex items-center justify-center flex-col">
+                    <svg class="w-24 h-24 text-teal-400 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                            d="M15 4h3c.6 0 1 .4 1 1v15c0 .6-.4 1-1 1H6a1 1 0 0 1-1-1V5c0-.6.4-1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z" />
+                    </svg>
+                    <h3 class="text-3xl">Traitement
+                    </h3>
+                    <span class="text-lg">
+                        Approche individuelle
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="bg-gray-50 mb-4 p-4 sm:mb-0">
+                <div class="flex items-center justify-center flex-col">
+                    <svg class="w-24 h-24 text-teal-400 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-width="1"
+                            d="M16 19h4c.6 0 1-.4 1-1v-1a3 3 0 0 0-3-3h-2m-2.2-4A3 3 0 0 0 19 8a3 3 0 0 0-5.2-2M3 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+                    <h3 class="text-3xl">Soins </h3>
+                    <span class="text-lg">
+                        Sécurité et précaution
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="bg-gray-50 mb-4 p-4 sm:mb-0">
+                <div class=" flex items-center justify-center flex-col">
+                    <svg class="w-24 h-24 text-teal-400 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-width="1"
+                            d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3a2.5 2.5 0 1 1 2-4.5M19.5 17h.5c.6 0 1-.4 1-1a3 3 0 0 0-3-3h-1m0-3a2.5 2.5 0 1 0-2-4.5m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3c0 .6-.4 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
+                    </svg>
+                    <h3 class="text-3xl">Pédiatrique</h3>
+                    <span class="text-lg">
+                        Garde d'enfants de haute qualité
+                    </span>
+                </div>
+            </div>
+                
+
+            <div class="bg-gray-50 mb-4 p-4 sm:mb-0" >
+                <div class=" flex items-center justify-center flex-col">
+                    <svg class="w-24 h-24 text-teal-400 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd"
+                            d="M5 4c0-1.1.9-2 2-2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4Zm12 12V5H7v11h10Zm-5 1a1 1 0 1 0 0 2 1 1 0 1 0 0-2Z"
+                            clip-rule="evenodd" />
+                    </svg>
+
+                    <h3 class="text-3xl">Aide en ligne
+                    </h3>
+                    <span class="text-lg">
+                        24/7
+                    </span>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-span-2 mb-4 py-4 px-2 md:px-0 sm:mb-0">
+            <div class="bg-teal-400 flex items-start justify-start  flex-col ">
+                <div class="md:p-10 p-4">
+                    <h1 class="text-white text-xl font-bold ">Consultez notre </h1>
+                    <h1 class="text-white text-3xl font-bold ">Hebdomadaire</h1>
+                    <p class="text-white text-lg py-5">Vous pouvez prendre rendez-vous, sélectionner l'heure qui
+                        vous convient et choisir le médecin approprié ici.</p>
+                    <div class="flex flex-col text-white">
+                        <div class="grid grid-cols-2 font-bold text-xl mb-8">
+                            <div class="flex justify-start ">Lundi-vendredi</div>
+                            <div class="flex justify-end text-orange-300">08:00 - 18:00</div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-x-4 font-bold text-xl mb-8">
+                            <div class="flex justify-start">Samedi</div>
+                            <div class="flex justify-end text-orange-300">08:00 - 18:00</div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-x-4 font-bold text-xl mb-8">
+                            <div class="flex justify-start">Dimanche</div>
+                            <div class="flex justify-end text-orange-300">08:00 - 18:00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

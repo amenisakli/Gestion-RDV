@@ -1,0 +1,86 @@
+<div class="p-4 mb-4 text-lg text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert"
+    *ngIf="alertMat">
+    <span class="font-bold text-lg">Le numéro de matricule de {{patient.name }} {{patient.lastname}}
+        est {{mat}}.</span>
+</div>
+<div class="w-full">
+    <div class="px-4 py-2 ">
+        <div class="flex inline-flex py-7">
+            <svg class="w-6 h-6 text-teal-700 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                    d="M7 2a2 2 0 0 0-2 2v1a1 1 0 0 0 0 2v1a1 1 0 0 0 0 2v1a1 1 0 1 0 0 2v1a1 1 0 1 0 0 2v1a1 1 0 1 0 0 2v1c0 1.1.9 2 2 2h11a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H7Zm3 8a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm-1 7a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3c0 .6-.4 1-1 1h-6a1 1 0 0 1-1-1Z"
+                    clip-rule="evenodd" />
+            </svg>
+
+            <h5 class="text-xl font-semibold dark:text-white "> Je complète mes informations</h5>
+        </div>
+        <form [formGroup]="PatientForm" *ngIf="patient">
+            <div class="flex flex-col md:flex-row py-8">
+                <label for="name" class="md:w-1/4 font-medium md:text-base text-md text-gray-800 md:pr-4 padding-label py-4 md:py-0">Nom*</label>
+                <input type="text" [(ngModel)]="patient.name" id="name" formControlName="name" placeholder="Saisir votre nom"
+                    class="md:text-base text-sm bg-gray-50 border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-2/4 p-2.5 ">
+            </div>
+            <div class="flex flex-col md:flex-row py-4">
+                <label for="lastname" class="md:w-1/4 font-medium md:text-base text-md text-gray-800 md:pr-4 padding-label py-4 md:py-0">Prénom*</label>
+                <input type="text" [(ngModel)]="patient.lastname" id="lastname" formControlName="lastname" placeholder="Saisir votre prénom"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 md:text-base text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-2/4 p-2.5 ">
+            </div>
+            <div class="flex flex-col md:flex-row py-4">
+                <label for="tel" class="md:w-1/4 font-medium md:text-base text-md text-gray-800 md:pr-4 padding-label py-4 md:py-0">Téléphone*</label>
+                <input type="tel" [(ngModel)]="patient.tel" id="tel" formControlName="tel" placeholder="Saisir votre numéro de téléphone"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 md:text-base text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-2/4 p-2.5 ">
+            </div>
+            <div class="flex flex-col md:flex-row py-4">
+                <label class="md:w-1/4 font-medium md:text-base text-md text-gray-800 md:pr-4 padding-label py-4 md:py-0">Type Régime Sociale*</label>
+                <div class="md:w-2/4 p-2.5 ">
+                    <div class="flex ">
+                        <label class="inline-flex items-center">
+                            <input type="radio" [(ngModel)]="patient.dossier" formControlName="dossier" value="CNSS" class="form-radio">
+                            <span class="ml-2 md:text-base text-sm">CNSS</span>
+                        </label>
+                        <label class="inline-flex items-center ml-6">
+                            <input type="radio" [(ngModel)]="patient.dossier" formControlName="dossier" value="CNAM" class="form-radio">
+                            <span class="ml-2 md:text-base text-sm">CNAM</span>
+                        </label>
+                        <label class="inline-flex items-center ml-6">
+                            <input type="radio" [(ngModel)]="patient.dossier" formControlName="dossier" value="CNRPS" class="form-radio">
+                            <span class="ml-2 md:text-base text-sm">CNRPS</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row py-4">
+                <label for="socialNumber" class="md:w-1/4 font-medium md:text-base text-md text-gray-800 md:pr-4 padding-label py-4 md:py-0">Numero Dossier Social*</label>
+                <input type="text" id="socialNumber" formControlName="numero" [(ngModel)]="patient.numero"
+                    placeholder="Saisir votre numero dossier sociale"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 md:text-base text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-2/4 p-2.5 ">
+            </div>
+            <div class="flex flex-col md:flex-row py-4" *ngIf=patient.email>
+                <label for="socialNumber" class="md:w-1/4 font-medium md:text-base text-md text-gray-800 md:pr-4 padding-label py-4 md:py-0">Email *</label>
+                <input type="text" id="socialNumber" formControlName="email" [(ngModel)]="patient.email"
+                    placeholder="Saisir votre numero dossier sociale"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 md:text-base text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-2/4 p-2.5 ">
+            </div>
+            <div class="flex flex-col justify-start md:flex-row md:pt-20 pt-8">
+                <a type="button" routerLink="/patient"
+                    class="uppercase inline-flex justify-center px-4 py-2 text-md font-semibold  text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-600 focus:z-10 focus:ring-2 focus:ring-blue-600 focus:text-blue-600 md:mr-2 md:mb-0 mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 pr-1">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+                    </svg>
+                    Annuler
+                </a>
+                <button type="submit" (click)="ModifierPatient()"
+                    class="disabled:opacity-30 uppercase inline-flex justify-center px-4 py-2 text-md font-semibold  text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-green-600 focus:z-10 focus:ring-2 focus:ring-green-600 focus:text-green-600 md:ml-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 pr-1">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                    Enregistrer
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="flex flex-row items-center justify-center bg-gradient-to-l from-teal-300 lg:my-36">
+
+    <div class="bg-teal-50 w-1/2 p-20 mx-14 drop-shadow-lg rounded-lg">
+        <div class="xl:text-6xl sm:text-4xl text-4xl  font-extrabold text-teal-400 px-0 sm:px-3  pb-20">
+            Se connecter
+        </div>
+        <form class="max-w-sm mx-auto" [formGroup]="LoginForm">
+            <div class="mb-5">
+                <label for="email" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Votre
+                    email</label>
+                <input type="email" formControlName="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg 
+            focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 " placeholder="name@name.com" required />
+                <!-- <div *ngIf="LoginForm.get('email')?.errors?.['required'] && LoginForm.get('email')?.touched"
+                    class="text-red-500">Email est obligatoire</div>
+                <div *ngIf="LoginForm.get('email')?.errors?.['email'] && LoginForm.get('email')?.touched"
+                    class="text-red-500">Format d'email invalide</div> -->
+
+            </div>
+            <div class="mb-5">
+                <label for="password" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Votre mot de
+                    passe</label>
+                <input type="password" formControlName="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-teal-500 focus:border-teal-500 
+                    block w-full p-2.5 " required />
+                <!-- <div *ngIf="LoginForm.get('password')?.errors?.['required'] && LoginForm.get('password')?.touched"
+                    class="text-red-500">Mot de passe est obligatoire</div>
+                <div *ngIf="LoginForm.get('password')?.errors?.['pattern'] && LoginForm.get('password')?.touched"
+                    class="text-red-500">Le mot de passe doit comporter au moins 8 caractères avec au moins une lettre majuscule,
+                    une lettre minuscule et un chiffre</div> -->
+
+            </div>
+
+            <button type="submit" (click)="Login()"
+                class="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center d">Se
+                connecter</button>
+        </form>
+    </div>
+    <div class="w-1/2 p-20">
+        <img src="https://assets.setmore.com/website/v2/images/industry-pages/medical/book-doctors-appointment-online.png"
+            alt="">
+    </div>
+
+</div>

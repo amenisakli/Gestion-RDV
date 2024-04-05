@@ -1,0 +1,151 @@
+<div class="w-full">
+    <div class="antialiased sans-serif ">
+        <div class=" px-4">
+            <h4 class="pt-4 pb-4 text-2xl font-medium dark:text-white ">Modifier un rendez-vous</h4>
+            <form [formGroup]="RdvForm" *ngIf="rdv">
+                <div class="py-4">
+                    <label for="name" class="font-bold md:text-lg text-base mb-4 text-gray-700 block">Service</label>
+                    <select formControlName="serviceId" [(ngModel)]="selectedService"
+                        class="w-full pb-3 pl-4 pr-10 py-3 md:text-base text-sm leading-none rounded-lg shadow-sm focus:outline-none focus:shadow-outline">
+                        <option [ngValue]="selectedService">{{selectedService}}</option>
+                        <option *ngFor='let services of service' [ngValue]="services.id">{{services.name}}</option>
+                    </select>
+                </div>
+                <div class="py-4">
+                    <label for="name" class="font-bold md:text-lg text-base mb-4 text-gray-700 block">Patient</label>
+                    <select formControlName="patientId" [(ngModel)]="patientSelected"
+                        class="w-full  pl-4 pr-10 py-3 md:text-base text-sm leading-none rounded-lg shadow-sm focus:outline-none focus:shadow-outline">
+                        <option [ngValue]="patientSelected">{{patientSelected}}</option>
+                        <option *ngFor='let patients of patient' [ngValue]="patients.id">{{patients.matricule }}</option>
+                    </select>
+                </div>
+                <div class="mb-5 py-4">
+                    <label for="datepicker" class="font-bold mb-4 md:text-lg text-base text-gray-700 block">Sélectionner une date</label>
+                    <div class="relative">
+                        <input type="hidden" name="date" x-ref="date" />
+                        <input type="text" readonly [(ngModel)]="date" formControlName="date"
+                            (click)="showDatepicker = !showDatepicker" (keydown.escape)="showDatepicker = false" class="w-full pb-3 pl-4 pr-10 py-3 leading-none rounded-lg shadow-sm focus:outline-none focus:shadow-outline
+                    text-gray-600
+                    font-semibold
+                    md:text-base 
+                    text-sm
+                  " placeholder="Select date" />
+                        <div class="absolute top-0 right-0 px-3 py-2">
+                            <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" *ngIf="showAlert" role="alert">
+                    <span class="font-medium">S'il vous plaît  choisir une date inferieur au date d'aujourd'hui.</span>
+                </div>
+                <div class="bg-white px-4  rounded-lg shadow  top-10	">
+                    <div class="flex justify-between items-center mb-2">
+                        <div>
+                            <span class="text-lg font-bold text-gray-800">{{ MONTH_NAMES[month] }}</span>
+                        </div>
+                        <div>
+                            <button type="button" class="
+                      transition
+                      ease-in-out
+                      duration-100
+                      inline-flex
+                      cursor-pointer
+                      hover:bg-gray-200
+                      p-1
+                      rounded
+                    " [ngClass]="{ 'cursor-not-allowed opacity-25': month === 0 }"
+                                [disabled]="month === 0 ? true : false" (click)="month = month - 1"
+                                (click)="getNoOfDays()">
+                                <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                            <button type="button" class="
+                      transition
+                      ease-in-out
+                      duration-100
+                      inline-flex
+                      cursor-pointer
+                      hover:bg-gray-200
+                      p-1
+                      rounded
+                    " [ngClass]="{ 'cursor-not-allowed opacity-25': month === 11 }"
+                                [disabled]="month === 11 ? true : false" (click)="month = month + 1"
+                                (click)="getNoOfDays()">
+                                <svg class="h-6 w-6 text-gray-500 inline-flex" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex grid grid-cols-7 flex-wrap mb-3 ">
+                        <ng-container *ngFor="let day of DAYS; let index = index">
+                            <div class="px-1">
+                                <div class="text-gray-800 font-light text-center text-xs">{{ day }}</div>
+                            </div>
+                        </ng-container>
+                    </div>
+
+                    <div class="flex flex-wrap -mx-1">
+                        <ng-container *ngFor="let blankday of blankdays">
+                            <div style="width: 14.28%" class="text-center border-none p-1 border-transparent text-sm">
+                            </div>
+                        </ng-container>
+                        <ng-container *ngFor="let date of no_of_days; let dateIndex = index; trackBy: trackByIdentity">
+                            <div style="width: 14.28%" class="px-1 mb-1">
+                                <div  (click)="getDateValue(date)" class="
+                                cursor-pointer
+                                text-center
+                                md:text-md
+                                text-sm
+                                rounded
+                                leading-loose
+                                sm:border
+                                sm:border-gray-300
+                                transition
+                                ease-in-out
+                                duration-100
+                                text-xl
+                                  " [ngClass]="{
+                                    'bg-blue-500 text-white': isToday(date) === true,
+                                    'text-gray-700 hover:bg-blue-200': isToday(date) === false,
+                                    'bg-red-300 text-white': isHoliday(date, month)
+                                  }">
+                                    {{ date }}
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center md:flex-row py-10">
+                    <button type="button" onclick="window.history.back()"
+                        class="uppercase inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-600 focus:z-10 focus:ring-2 focus:ring-blue-600 focus:text-blue-600 md:mr-2 md:mb-0 mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-5 h-4 pr-1">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+                        </svg>
+                        Annuler
+                    </button>
+                    <button type="submit" (click)=" AjouterRdv()"
+                        class="disabled:opacity-30 uppercase inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-600 focus:z-10 focus:ring-2 focus:ring-blue-600 focus:text-blue-600 md:ml-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-5 h-4 pr-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        Enregistrer
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

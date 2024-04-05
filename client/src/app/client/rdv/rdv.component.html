@@ -1,0 +1,153 @@
+<div class="flex flex-col lg:px-32 p-8 ">
+    <div class="">
+        <div class="flex inline-flex p-7">
+            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 6H5m2 3H5m2 3H5m2 3H5m2 3H5m11-1a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2M7 3h11c.6 0 1 .4 1 1v16c0 .6-.4 1-1 1H7a1 1 0 0 1-1-1V4c0-.6.4-1 1-1Zm8 7a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"/>
+              </svg>
+            <h5 class="md:text-xl sm:text-lg text-lg font-bold dark:text-white px-1"> Vos informations personnels</h5>
+        </div>
+        <div class="bg-gray-50 lg:flex lg:flex-col rounded p-8 sm:block">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-2/5 font-bold  md:text-lg sm:text-md text-sm md:pr-4 capitalize">Matricule: </div>
+                <div class="md:w-3/5 font-medium  md:text-lg sm:text-md text-sm md:pr-4 capitalize text-gray-600">
+                    {{patient.matricule}} </div>
+            </div>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-2/5 font-bold  md:text-lg sm:text-md text-sm md:pr-4 capitalize">Nom: </div>
+                <div class="md:w-3/5 font-medium  md:text-lg sm:text-md text-sm md:pr-4 capitalize text-gray-400">
+                    {{patient.name}} </div>
+            </div>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-2/5 font-bold  md:text-lg sm:text-md text-sm md:pr-4 capitalize">Prenom: </div>
+                <div class="md:w-3/5 font-medium  md:text-lg sm:text-md text-sm md:pr-4 capitalize text-gray-400">
+                    {{patient.lastname}} </div>
+            </div>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-2/5 font-bold  md:text-lg sm:text-md text-sm md:pr-4 capitalize">Telephonne: </div>
+                <div class="md:w-3/5 font-medium  md:text-lg sm:text-md text-sm md:pr-4 capitalize text-gray-400">
+                    {{patient.tel}} </div>
+            </div>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-2/5 font-bold  md:text-lg sm:text-md text-sm md:pr-4 capitalize">Email: </div>
+                <div class="md:w-3/5 font-medium md:text-lg sm:text-md text-sm md:pr-4 capitalize text-gray-400">
+                    {{patient.email}} </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="">
+        <div class="grid grid-cols-1 gap-4">
+            <div class=" sm:place-self-auto lg:place-self-center p-4 w-full ">
+                <div class="flex inline-flex p-4">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                            d="M20 6H10m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4m16 6h-2m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4m16 6H10m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4" />
+                    </svg>
+                    <h5 class="text-xl font-bold dark:text-white px-1"> List de rendez-vous</h5>
+                </div>
+                <br>
+                <div class="inline-flex rounded-md m-4 shadow-sm" role="group">
+                    <button type="button" routerLink="/"
+                        class="inline-flex items-center px-4 py-2 text-md font-medium text-gray-900 bg-white border border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700">
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 12h14M5 12l4-4m-4 4 4 4" />
+                        </svg>
+                        Retour
+                    </button>
+                    <button type="button" (click)="onAddButtonClicked(patient.matricule)"
+                        class="inline-flex items-center px-4 py-2 text-md font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-5 h-4 pr-1">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                        Ajouter
+                    </button>
+                </div>
+
+                <div class="overflow-x-auto shadow-md rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead class="text-md text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Date rendez-vous
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Service
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Etat
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rdv of rdvs" class=" text-lg bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4">
+                                    {{ rdv?.date }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ rdv?.serviceId?.name }}
+                                </td>
+                                <td class="px-6 py-4 font-bold">
+                                    <span
+                                        class="{{ rdv?.etat ? 'bg-red-50 text-red-800' : 'bg-green-50 text-green-800' }} text-sm">
+                                        {{ rdv?.etat ? 'Confirmer' : 'Pas encore' }}
+                                    </span>
+                                </td>
+                                <td class="flex items-center px-6 py-4 space-x-3">
+                                    <button (click)="confirmer(rdv.id)" [disabled]="rdv.etat"
+                                        class=" disabled:opacity-50 text-sky-600 font-medium text-lg  py-2.5 me-2 mb-2 underline underline-offset-4">Confirmer</button>
+                                    <button (click)="openRdv(rdv.id)" [disabled]="rdv.etat"
+                                        class="disabled:opacity-50  text-pink-600 font-medium  text-lg py-2.5 me-2 mb-2 underline underline-offset-4 ">Supprimer</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="fixed z-10 inset-0 overflow-y-auto" [ngClass]="{'hidden': !showModalRDV}">
+    <div class="flex items-end justify-center min-h-screen text-center sm:block sm:p-0">
+        <div class="fixed inset-0 transition-opacity " aria-hidden="true">
+            <div class="absolute inset-0 bg-transparent"></div>
+        </div>
+
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+        <div class="inline-block align-bottom bg-gray-50 rounded-lg border-2 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+            role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+            <div class="bg-gray-50 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+                    Suppression du rendez_vous
+                </h3>
+                <div class="mt-2">
+                    <p class="text-sm text-gray-500">
+                        Voulez-vous supprimer ce rendez_vous ?
+                    </p>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                <button (click)="showModalRDV = false " type="button"
+                    class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
+                    Annuler
+                </button>
+                <button (click)="SupprimerRdv()" type="button"
+                    class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
+                    Confirmer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

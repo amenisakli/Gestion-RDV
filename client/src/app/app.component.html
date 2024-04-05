@@ -1,0 +1,12 @@
+<div *ngIf="token">
+<app-aside></app-aside>
+</div>
+<div class=" px-8 py-4  absolute sm:left-0 md:left-64 right-0 top-20 " *ngIf="token">
+        <router-outlet></router-outlet>
+</div>
+<div *ngIf="!token">
+    <app-nav></app-nav>
+</div>
+<div *ngIf="!token">
+    <router-outlet></router-outlet>
+</div>
