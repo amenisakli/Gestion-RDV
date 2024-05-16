@@ -70,10 +70,9 @@ export class AddComponent {
   ngOnInit(): void {
     this.initDate();
     this.getNoOfDays();
-    this.serviceService.getService().subscribe(
-      data => {
-        this.service = data;
-    });
+      this.serviceService.getService().subscribe((services) => {
+        this.service = services.filter(service => service.type !== 'Administrative');
+      });
     this.patientService.getPatient().subscribe(
       data => {
         this.patient = data;

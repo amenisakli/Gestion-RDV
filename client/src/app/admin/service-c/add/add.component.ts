@@ -14,7 +14,8 @@ export class AddComponent {
   ServiceForm = new FormGroup({
     name: new FormControl(),
     desc: new FormControl(),
-    pic : new FormControl()
+    pic : new FormControl(),
+    type : new FormControl()
   })
   showAlert : boolean = false
   constructor(private serviceService:ServiceService){}

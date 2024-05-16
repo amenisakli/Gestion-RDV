@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { UserService } from '../user.service';
 import { RoleService } from '../../role/role.service';
 import { RouterModule } from '@angular/router';
+import { ServiceService } from 'src/app/client/service/service.service';
 
 @Component({
   selector: 'app-add',
@@ -15,8 +16,9 @@ import { RouterModule } from '@angular/router';
 export class AddComponent {
   UserForm: FormGroup | any
   role : any
+  service : any
   showAlert :boolean = false
-  constructor(private userService:UserService,private formBuilder: FormBuilder,private roleService:RoleService){}
+  constructor(private userService:UserService,private formBuilder: FormBuilder,private roleService:RoleService,private serviceService:ServiceService){}
   ngOnInit(): void {
     this.UserForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -24,10 +26,15 @@ export class AddComponent {
       tel: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      roleId: ['Choisir un rôle', Validators.required] // Définir la valeur par défaut ici
+      roleId: ['Choisir un rôle', Validators.required], // Définir la valeur par défaut ici
+      serviceId: ['Choisir un service', Validators.required] // Définir la valeur par défaut ici
+
     });
 this.roleService.getRole().subscribe(data =>{
   this.role = data
+})
+this.serviceService.getService().subscribe(data =>{
+  this.service = data 
 })
   }
   Submit(){

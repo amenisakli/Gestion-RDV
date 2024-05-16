@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Role } from "src/role/entities/role.entity";
+import { Service } from "src/service/entities/service.entity";
 import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -21,6 +22,10 @@ export class User {
     lastname: string | null;
 
     @ApiProperty()
+    @Column("text", { name: "adresse", nullable: true })
+    adresse: string | null;
+
+    @ApiProperty()
     @Column("text", { name: "email", nullable: true, unique: true })
     email: string | null;
 
@@ -38,5 +43,8 @@ export class User {
 
     @ManyToOne(() => Role, (role) => role.user, { cascade: true, eager: true })
     roleId: any;
+
+    @ManyToOne(() => Service, (service) => service.user, { cascade: true, eager: true })
+    serviceId: any; 
 }
 

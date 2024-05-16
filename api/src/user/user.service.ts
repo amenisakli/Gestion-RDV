@@ -44,7 +44,8 @@ export class UserService {
   findAll() {
     return this.userRepository.createQueryBuilder('user')
     .leftJoinAndSelect('user.roleId','role')
-    .select(['user.name','user.id','user.lastname','user.email','user.tel','role.id','role.name'])
+    .leftJoinAndSelect('user.serviceId','service')
+    .select(['user.name','user.id','user.lastname','user.email','user.tel','role.id','role.name','service.id','service.type'])
     .andWhere('user.status = true ')
     .getMany();
   }

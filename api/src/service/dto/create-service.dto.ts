@@ -11,5 +11,8 @@ export class CreateServiceDto {
     @ApiProperty()
     desc:string
 
+    @ApiProperty()
+    type:string
+
 
 }

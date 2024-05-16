@@ -19,6 +19,11 @@ export class CreateUserDto {
     roleId:number
 
     @ApiProperty()
+    serviceId:number
+
+    @ApiProperty()
     password:string
 
+    @ApiProperty()
+    adresse:string
 }

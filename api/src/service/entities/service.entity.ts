@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Rdv } from "src/rdv/entities/rdv.entity";
+import { User } from "src/user/entities/user.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("Service")
@@ -9,9 +10,13 @@ export class Service {
     @PrimaryGeneratedColumn()
     id:number;
 
-    @ApiProperty({nullable : true})
-    @Column()
+    @ApiProperty()
+    @Column({nullable : true})
     name:string;
+
+    @ApiProperty()
+    @Column({nullable : true})
+    type:string;
 
     @ApiProperty()
     @Column({ nullable: true })
@@ -27,36 +32,8 @@ export class Service {
     @ApiProperty()
     @Column({default:true})
     status:boolean;
-    // @ApiProperty()
-    // @OneToMany(type => Rdv, rdv => rdv.serviceId)
-    // rdv: Rdv[];
+   
+    @OneToMany(() => User, user => user.serviceId)
+    user: any;
 
 }
-// Rdv.entity.ts
-// import { Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
-// import { Service } from './Service.entity';
-
-// @Entity()
-// export class Rdv {
-//   @PrimaryGeneratedColumn()
-//   id: number;
-
-
-
-  // Other properties...
-
-// }
-
-// Service.entity.ts
-// import { Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-// import { Rdv } from './Rdv.entity';
-
-// @Entity()
-// export class Service {
-//   @PrimaryGeneratedColumn()
-//   id: number;
-
-
-
-  // Other properties...
-// }
