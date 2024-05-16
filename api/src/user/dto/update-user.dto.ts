@@ -19,5 +19,11 @@ export class UpdateUserDto  {
     password:string
 
     @ApiProperty()
+    serviceId:number 
+    
+    @ApiProperty()
     roleId:number
+
+    @ApiProperty()
+    adresse:string
 }

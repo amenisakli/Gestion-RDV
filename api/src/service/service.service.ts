@@ -17,7 +17,7 @@ export class ServiceService {
 
   findAll() {
     return this.serviceRepository.createQueryBuilder('service')
-    .select(['service.name','service.pic','service.desc','service.id'])
+    .select(['service.name','service.pic','service.desc','service.id','service.type'])
     .andWhere('service.status = true ')
     .getMany();  }
 

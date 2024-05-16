@@ -53,6 +53,9 @@
                                 Role
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                Service
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 Action
                             </th>
                         </tr>
@@ -76,6 +79,9 @@
                             </td>
                             <td class="px-6 py-4">
                                 {{ us?.roleId.name }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ us?.serviceId.type }}
                             </td>
                             <td class="flex items-center px-6 py-4 space-x-3">
                                 <button  routerLink="update/{{us.id}}"

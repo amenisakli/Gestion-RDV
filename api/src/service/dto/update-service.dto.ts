@@ -12,4 +12,6 @@ export class UpdateServiceDto {
     @ApiProperty()
     desc:string
 
+    @ApiProperty()
+    type:string
 }

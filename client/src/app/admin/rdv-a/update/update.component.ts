@@ -81,10 +81,9 @@ export class UpdateComponent {
           this.selectedService = this.rdv.serviceId?.name           
         });
     });
-    this.serviceService.getService().subscribe(
-      data => {
-        this.service = data;
-    });
+      this.serviceService.getService().subscribe((services) => {
+        this.service = services.filter(service => service.type !== 'Administrative');
+      });
     this.patientService.getPatient().subscribe(
       data => {
         this.patient = data;

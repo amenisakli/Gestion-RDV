@@ -16,8 +16,9 @@ export class ServiceComponent {
 
   constructor(private serviceService: ServiceService) { }
   ngOnInit(): void {
-    this.serviceService.getService().subscribe((res) => {
-      this.service = res
-    })
+    this.serviceService.getService().subscribe((services) => {
+      this.service = services.filter(service => service.type !== 'Administrative');
+    });
   }
+  
 }

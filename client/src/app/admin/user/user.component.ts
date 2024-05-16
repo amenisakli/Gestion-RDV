@@ -21,6 +21,8 @@ ngOnInit(): void {
 
 this.userService.getUser().subscribe(data => {
   this.user = data.sort((a:any, b:any) => b.id - a.id);
+  console.log(data);
+  
 })}
 openSer(id: any) {    
   this.SelectedidUs = id

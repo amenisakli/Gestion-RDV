@@ -16,7 +16,8 @@ export class UpdateComponent implements OnInit {
   ServiceForm = new FormGroup({
     name: new FormControl('Sélectionner service'),
     desc: new FormControl(),
-    pic: new FormControl()
+    pic: new FormControl(),
+    type : new FormControl()
   })
   id: any
   service: Service[] | any = [];

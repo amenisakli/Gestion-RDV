@@ -43,6 +43,9 @@
                                     Description
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    Type
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     Action
                                 </th>
                             </tr>
@@ -58,8 +61,11 @@
                                 <td class="px-6 py-4">
                                     {{ ser?.desc }}
                                 </td>
+                                <td class="px-6 py-4">
+                                    {{ ser?.type }}
+                                </td>
                                 <td class="flex items-center px-6 py-4 space-x-3">
-                                    <button  routerLink="/update/{{ser.id}}"
+                                    <button  routerLink="update/{{ser.id}}"
                                     class=" text-teal-400 font-medium text-lg  py-2.5 me-2 mb-2 underline underline-offset-4">Modifier</button>
                                     <button (click)="openSer(ser.id)"
                                         class=" text-red-400 font-medium  text-lg py-2.5 me-2 mb-2 underline underline-offset-4 ">Supprimer</button>

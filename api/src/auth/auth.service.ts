@@ -28,7 +28,8 @@ export class AuthService {
         if (!users) {
             throw new Error("Utilisateur non trouvé");
         }
-        const payload = { id: users.id,username: users.name, lastname: users.lastname, roleId: users.roleId.name,email:users.email , tel:users.tel,matricule : users.matricule };                
+        const payload = { id: users.id,
+            username: users.name, lastname: users.lastname, roleId: users.roleId.name,email:users.email , adresse: users.adresse,tel:users.tel,matricule : users.matricule, serviceId: users.serviceId.name };                
         const token = this.jwtService.sign(payload)
         return {
             token,
